@@ -1,0 +1,1883 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miss France 2027 • Carnet & Évaluations</title>
+
+    <!-- Polices Google Fonts (Libres) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,500;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome (Libre) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-page: #f8fafc;
+            --surface-card: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border-light: #e2e8f0;
+
+            --pastel-purple: #8b5cf6;
+            --pastel-purple-light: #f3e8ff;
+            --pastel-rose: #f43f5e;
+            --pastel-rose-light: #fff1f2;
+            --pastel-mint: #10b981;
+            --pastel-mint-light: #ecfdf5;
+            --pastel-amber: #f59e0b;
+            --pastel-amber-light: #fef3c7;
+            --pastel-peach: #fb923c;
+            --pastel-peach-light: #ffedd5;
+
+            --shadow-subtle: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
+            --shadow-card: 0 10px 25px -3px rgba(15, 23, 42, 0.06), 0 4px 6px -4px rgba(15, 23, 42, 0.04);
+            --shadow-elevated: 0 20px 35px -5px rgba(15, 23, 42, 0.1);
+
+            --radius-xl: 24px;
+            --radius-lg: 16px;
+            --radius-full: 9999px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            line-height: 1.5;
+            padding-bottom: 70px;
+        }
+
+        .font-heading {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* HEADER */
+        header {
+            background-color: #ffffff;
+            border-bottom: 1px solid var(--border-light);
+            padding: 24px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            box-shadow: 0 2px 10px rgba(15, 23, 42, 0.02);
+        }
+
+        .header-content {
+            max-width: 1240px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .header-avatar-crown {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-full);
+            background: linear-gradient(135deg, #c084fc, #f472b6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 1.25rem;
+            box-shadow: 0 6px 14px rgba(192, 132, 252, 0.35);
+        }
+
+        .header-title-box small {
+            text-transform: uppercase;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            color: var(--pastel-rose);
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .header-title-box h1 {
+            font-size: 1.45rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .header-title-box h1 span {
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        .btn-podium-header {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            padding: 10px 20px;
+            background-color: var(--pastel-purple-light);
+            color: var(--pastel-purple);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            border-radius: var(--radius-full);
+            font-weight: 700;
+            font-size: 0.88rem;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+        }
+
+        .btn-podium-header:hover {
+            background-color: var(--pastel-purple);
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(139, 92, 246, 0.25);
+        }
+
+        .badge-podium-filled {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: var(--pastel-amber);
+            position: absolute;
+            top: 6px;
+            right: 8px;
+            display: none;
+        }
+
+        /* BARRE DE CONTRÔLES */
+        .controls-wrapper {
+            max-width: 1240px;
+            margin: 28px auto 20px;
+            padding: 0 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .controls-primary {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .search-pill {
+            flex: 1.4;
+            min-width: 260px;
+            position: relative;
+        }
+
+        .search-pill i {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .search-pill input {
+            width: 100%;
+            padding: 13px 20px 13px 46px;
+            background-color: #ffffff;
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-full);
+            font-family: inherit;
+            font-size: 0.92rem;
+            color: var(--text-main);
+            outline: none;
+            box-shadow: var(--shadow-subtle);
+            transition: border-color 0.2s;
+        }
+
+        .search-pill input:focus {
+            border-color: var(--pastel-purple);
+        }
+
+        .filter-regions-pill,
+        .filter-rating-pill {
+            flex: 1;
+            min-width: 200px;
+            position: relative;
+        }
+
+        .btn-select-pill {
+            width: 100%;
+            padding: 13px 20px;
+            background-color: #ffffff;
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-full);
+            font-family: inherit;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            box-shadow: var(--shadow-subtle);
+            outline: none;
+        }
+
+        .filter-rating-pill select {
+            width: 100%;
+            padding: 13px 20px;
+            background-color: #ffffff;
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-full);
+            font-family: inherit;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-main);
+            appearance: none;
+            outline: none;
+            box-shadow: var(--shadow-subtle);
+            cursor: pointer;
+        }
+
+        .filter-rating-pill i.arrow-icon {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            pointer-events: none;
+            font-size: 0.8rem;
+        }
+
+        /* DROPDOWN MULTI-RÉGIONS */
+        .dropdown-menu-regions {
+            position: absolute;
+            top: 110%;
+            left: 0;
+            width: 100%;
+            min-width: 290px;
+            background: #ffffff;
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-elevated);
+            z-index: 99;
+            padding: 12px;
+            display: none;
+        }
+
+        .dropdown-regions-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .dropdown-regions-actions button {
+            background: none;
+            border: none;
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--pastel-purple);
+            cursor: pointer;
+        }
+
+        .regions-scroll-list {
+            max-height: 230px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .region-checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.86rem;
+            padding: 6px 8px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.15s;
+        }
+
+        .region-checkbox-label:hover {
+            background-color: var(--bg-page);
+        }
+
+        .region-checkbox-label input {
+            accent-color: var(--pastel-purple);
+            width: 16px;
+            height: 16px;
+        }
+
+        .active-regions-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            min-height: 10px;
+        }
+
+        .active-pill {
+            background: #ffffff;
+            border: 1px solid var(--border-light);
+            padding: 5px 12px;
+            border-radius: var(--radius-full);
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .active-pill i {
+            cursor: pointer;
+            color: var(--pastel-rose);
+        }
+
+        /* GRILLE DES MISS */
+        .grid-container {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .miss-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+            gap: 24px;
+        }
+
+        .miss-card {
+            background-color: var(--surface-card);
+            border-radius: var(--radius-xl);
+            border: 1px solid var(--border-light);
+            box-shadow: var(--shadow-card);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s;
+            position: relative;
+        }
+
+        .miss-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-elevated);
+        }
+
+        .miss-card-media {
+            position: relative;
+            width: 100%;
+            height: 330px;
+            background-color: #f1f5f9;
+            overflow: hidden;
+        }
+
+        .miss-card-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .miss-card:hover .miss-card-media img {
+            transform: scale(1.04);
+        }
+
+        .card-region-tag {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(8px);
+            color: var(--text-main);
+            padding: 6px 14px;
+            border-radius: var(--radius-full);
+            font-size: 0.74rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .card-rating-badge {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            background: #ffffff;
+            color: var(--pastel-amber);
+            padding: 5px 11px;
+            border-radius: var(--radius-full);
+            font-size: 0.8rem;
+            font-weight: 800;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .miss-card-content {
+            padding: 18px 20px 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .miss-name-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 4px;
+        }
+
+        .miss-meta-specs {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+
+        /* RECAP TAGS & NOTES EN CARTE */
+        .card-evaluation-recap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px dashed var(--border-light);
+        }
+
+        .mini-tag {
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 3px 9px;
+            border-radius: var(--radius-full);
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .mini-tag.quality {
+            background-color: var(--pastel-mint-light);
+            color: var(--pastel-mint);
+        }
+
+        .mini-tag.flaw {
+            background-color: var(--pastel-peach-light);
+            color: var(--pastel-peach);
+        }
+
+        .mini-tag.rating {
+            background-color: var(--pastel-amber-light);
+            color: var(--pastel-amber);
+        }
+
+        .mini-tag.note-present {
+            background-color: var(--pastel-purple-light);
+            color: var(--pastel-purple);
+        }
+
+        .no-results-state {
+            grid-column: 1 / -1;
+            background-color: #ffffff;
+            border-radius: var(--radius-xl);
+            padding: 60px 20px;
+            text-align: center;
+            color: var(--text-muted);
+            border: 1px solid var(--border-light);
+        }
+
+        /* MODALE COMMUNE */
+        .modal-backdrop {
+            position: fixed;
+            inset: 0;
+            background-color: rgba(15, 23, 42, 0.65);
+            backdrop-filter: blur(6px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 16px;
+            overflow-y: auto;
+        }
+
+        .modal-window {
+            background: #ffffff;
+            width: 100%;
+            max-width: 860px;
+            border-radius: var(--radius-xl);
+            box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.25);
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .btn-close-modal {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: #f1f5f9;
+            color: var(--text-muted);
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 20;
+            font-size: 1rem;
+            transition: all 0.2s;
+        }
+
+        .btn-close-modal:hover {
+            background-color: var(--pastel-rose-light);
+            color: var(--pastel-rose);
+        }
+
+        /* MODALE DÉTAIL MISS */
+        .modal-detail-grid {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        /* SLIDESHOW MODALE */
+        .slideshow-box {
+            position: relative;
+            height: 100%;
+            min-height: 360px;
+            background-color: #0f172a;
+            overflow: hidden;
+            user-select: none;
+            touch-action: pan-y;
+        }
+
+        .slides-track {
+            display: flex;
+            height: 100%;
+            transition: transform 0.3s ease;
+        }
+
+        .slide-item {
+            min-width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .slide-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .slideshow-nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.85);
+            border: none;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            font-size: 0.8rem;
+        }
+
+        .slideshow-nav-btn.prev { left: 12px; }
+        .slideshow-nav-btn.next { right: 12px; }
+
+        .slideshow-indicators {
+            position: absolute;
+            bottom: 14px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 6px;
+            z-index: 10;
+        }
+
+        .indicator-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.45);
+            cursor: pointer;
+        }
+
+        .indicator-dot.active {
+            background: #ffffff;
+            width: 16px;
+            border-radius: var(--radius-full);
+        }
+
+        /* INFOS MISS DANS MODALE */
+        .modal-info-panel {
+            padding: 28px;
+        }
+
+        .modal-header-topline {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+        }
+
+        .modal-region-badge {
+            display: inline-block;
+            background-color: var(--pastel-purple-light);
+            color: var(--pastel-purple);
+            font-size: 0.76rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            padding: 4px 12px;
+            border-radius: var(--radius-full);
+            margin-bottom: 6px;
+        }
+
+        .btn-instagram-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            background: linear-gradient(135deg, #fce7f3, #ffe4e6);
+            color: #be185d;
+            border: 1px solid #fbcfe8;
+            padding: 5px 14px;
+            border-radius: var(--radius-full);
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: var(--shadow-subtle);
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+            align-self: flex-start;
+            margin-bottom: 16px;
+        }
+
+        .btn-instagram-link i {
+            font-size: 0.92rem;
+            background: -webkit-linear-gradient(45deg, #f59e0b, #e11d48, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .btn-instagram-link:hover {
+            transform: translateY(-1px);
+            background: linear-gradient(135deg, #fbcfe8, #fecdd3);
+            box-shadow: 0 4px 12px rgba(244, 63, 94, 0.15);
+            color: #9d174d;
+        }
+
+        .modal-candidate-name {
+            font-size: 1.75rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+            color: var(--text-main);
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            background-color: var(--bg-page);
+            padding: 14px;
+            border-radius: var(--radius-lg);
+            margin-bottom: 18px;
+            font-size: 0.88rem;
+        }
+
+        .specs-grid span.label {
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .specs-grid span.value {
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .modal-biography {
+            font-size: 0.92rem;
+            color: #334155;
+            line-height: 1.6;
+        }
+
+        /* SECTION ÉVALUATION DU VISITEUR */
+        .modal-eval-section {
+            padding: 28px;
+            background-color: #fdfdfd;
+        }
+
+        .eval-block-title {
+            font-size: 0.98rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* NOTE 1 À 10 */
+        .rating-bar-container {
+            margin-bottom: 24px;
+        }
+
+        .rating-buttons-strip {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .btn-rate-score {
+            flex: 1;
+            min-width: 38px;
+            height: 42px;
+            background: #ffffff;
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 0.92rem;
+            color: var(--text-main);
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+
+        .btn-rate-score:hover {
+            border-color: var(--pastel-amber);
+            color: var(--pastel-amber);
+            transform: translateY(-2px);
+        }
+
+        .btn-rate-score.selected {
+            background: var(--pastel-amber);
+            border-color: var(--pastel-amber);
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.35);
+        }
+
+        .btn-reset-rate {
+            background: none;
+            border: none;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            cursor: pointer;
+            margin-top: 6px;
+            text-decoration: underline;
+        }
+
+        /* TAGS */
+        .tags-category-heading {
+            font-size: 0.74rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.8px;
+            color: var(--text-muted);
+            margin: 12px 0 6px;
+        }
+
+        .interactive-tags-box {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 14px;
+        }
+
+        .tag-toggle-btn {
+            padding: 6px 14px;
+            border-radius: var(--radius-full);
+            font-size: 0.82rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: 1px solid var(--border-light);
+            background: #ffffff;
+            color: var(--text-muted);
+            transition: all 0.15s;
+        }
+
+        .tag-toggle-btn.quality.active {
+            background-color: var(--pastel-mint-light);
+            border-color: var(--pastel-mint);
+            color: var(--pastel-mint);
+            font-weight: 700;
+        }
+
+        .tag-toggle-btn.flaw.active {
+            background-color: var(--pastel-peach-light);
+            border-color: var(--pastel-peach);
+            color: var(--pastel-peach);
+            font-weight: 700;
+        }
+
+        /* AJOUT TAG PERSO */
+        .custom-tag-creator {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 24px;
+            padding-top: 14px;
+            border-top: 1px dashed var(--border-light);
+            flex-wrap: wrap;
+        }
+
+        .custom-tag-creator input {
+            flex: 1.5;
+            min-width: 170px;
+            padding: 9px 14px;
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-full);
+            font-size: 0.85rem;
+            outline: none;
+        }
+
+        .custom-tag-creator select {
+            padding: 9px 14px;
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-full);
+            background: #ffffff;
+            font-size: 0.85rem;
+            outline: none;
+        }
+
+        .btn-add-custom-tag {
+            padding: 9px 18px;
+            background: var(--pastel-purple);
+            color: #ffffff;
+            border: none;
+            border-radius: var(--radius-full);
+            font-weight: 700;
+            font-size: 0.85rem;
+            cursor: pointer;
+        }
+
+        /* NOTES 256 CARACTÈRES */
+        .notes-textarea-box textarea {
+            width: 100%;
+            height: 90px;
+            padding: 12px 16px;
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-lg);
+            font-family: inherit;
+            font-size: 0.9rem;
+            resize: none;
+            outline: none;
+        }
+
+        .notes-textarea-box textarea:focus {
+            border-color: var(--pastel-purple);
+        }
+
+        .notes-footer-bar {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            margin-top: 6px;
+        }
+
+        .counter-alert {
+            color: var(--pastel-rose);
+        }
+
+        /* MODALE DU PODIUM TOP 3 */
+        .podium-modal-content {
+            padding: 34px 28px;
+            text-align: center;
+        }
+
+        .podium-title {
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+
+        .podium-subtitle {
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            margin-bottom: 28px;
+        }
+
+        .podium-visual-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            align-items: flex-end;
+            margin-bottom: 30px;
+        }
+
+        .podium-column {
+            background-color: var(--bg-page);
+            border-radius: var(--radius-xl);
+            padding: 18px 12px 14px;
+            border: 1px solid var(--border-light);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .podium-column.first {
+            order: 2;
+            background: linear-gradient(180deg, #fffbeb 0%, #fef3c7 100%);
+            border-color: #fde68a;
+            transform: translateY(-10px);
+        }
+
+        .podium-column.second { order: 1; }
+        .podium-column.third { order: 3; }
+
+        .podium-rank-badge {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+
+        .podium-column.first .podium-rank-badge { background: #f59e0b; color: #fff; }
+        .podium-column.second .podium-rank-badge { background: #94a3b8; color: #fff; }
+        .podium-column.third .podium-rank-badge { background: #d97706; color: #fff; }
+
+        .podium-avatar-preview {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #ffffff;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            margin-bottom: 8px;
+            background-color: #cbd5e1;
+        }
+
+        .podium-step-name {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .podium-step-region {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+
+        .podium-select-field {
+            width: 100%;
+            padding: 9px 12px;
+            border-radius: var(--radius-full);
+            border: 1px solid var(--border-light);
+            background: #ffffff;
+            font-family: inherit;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-main);
+            outline: none;
+            cursor: pointer;
+        }
+
+        .btn-reset-podium {
+            background: none;
+            border: 1px solid var(--border-light);
+            padding: 8px 18px;
+            border-radius: var(--radius-full);
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-reset-podium:hover {
+            border-color: var(--pastel-rose);
+            color: var(--pastel-rose);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .modal-detail-grid {
+                grid-template-columns: 1fr;
+            }
+            .slideshow-box {
+                min-height: 280px;
+                max-height: 320px;
+            }
+            .podium-visual-row {
+                grid-template-columns: 1fr;
+            }
+            .podium-column.first {
+                order: 1;
+                transform: none;
+            }
+            .podium-column.second { order: 2; }
+            .podium-column.third { order: 3; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- EN-TÊTE PASTEL -->
+    <header>
+        <div class="header-content">
+            <div class="header-left">
+                <div class="header-avatar-crown">
+                    <i class="fa-solid fa-crown"></i>
+                </div>
+                <div class="header-title-box">
+                    <small>Soirée d'élection</small>
+                    <h1 class="font-heading">Miss France <span>2027</span></h1>
+                </div>
+            </div>
+
+            <button type="button" class="btn-podium-header" id="btnOpenPodium">
+                <i class="fa-solid fa-trophy"></i>
+                <span>Mon Podium Top 3</span>
+                <div class="badge-podium-filled" id="podiumIndicatorDot"></div>
+            </button>
+        </div>
+    </header>
+
+    <!-- ZONE DE RECHERCHE ET FILTRES -->
+    <section class="controls-wrapper">
+        <div class="controls-primary">
+            <!-- Recherche libre -->
+            <div class="search-pill">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="searchInput" placeholder="Rechercher par prénom, nom, région...">
+            </div>
+
+            <!-- Filtre Multi-régions -->
+            <div class="filter-regions-pill">
+                <button type="button" class="btn-select-pill" id="btnToggleRegionsMenu">
+                    <span id="regionsSelectLabel">Toutes les régions</span>
+                    <i class="fa-solid fa-chevron-down" style="font-size: 0.78rem; color: var(--text-muted);"></i>
+                </button>
+
+                <div class="dropdown-menu-regions" id="regionsDropdownMenu">
+                    <div class="dropdown-regions-actions">
+                        <button type="button" id="btnCheckAll">Tout cocher</button>
+                        <button type="button" id="btnUncheckAll">Tout effacer</button>
+                    </div>
+                    <div class="regions-scroll-list" id="regionsListContainer">
+                        <!-- Rempli par JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filtre par note minimale -->
+            <div class="filter-rating-pill">
+                <select id="ratingFilterSelect">
+                    <option value="all" selected>Toutes les notes</option>
+                    <option value="10">Note : 10/10</option>
+                    <option value="9">Note : 9/10 et +</option>
+                    <option value="8">Note : 8/10 et +</option>
+                    <option value="7">Note : 7/10 et +</option>
+                    <option value="6">Note : 6/10 et +</option>
+                    <option value="5">Note : 5/10 et + (Moyenne)</option>
+                    <option value="unrated">Non notées</option>
+                </select>
+                <i class="fa-solid fa-chevron-down arrow-icon"></i>
+            </div>
+        </div>
+
+        <!-- Pastilles des régions actives -->
+        <div class="active-regions-pills" id="activeRegionsBadges"></div>
+    </section>
+
+    <!-- GRILLE DES CANDIDATES -->
+    <main class="grid-container">
+        <div class="miss-grid" id="missGridContainer">
+            <!-- Injecté par JavaScript -->
+        </div>
+    </main>
+
+    <!-- MODALE FICHE DÉTAIL D'UNE MISS -->
+    <div class="modal-backdrop" id="missModalBackdrop">
+        <div class="modal-window">
+            <button type="button" class="btn-close-modal" id="btnCloseMissModal" title="Fermer">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="modal-detail-grid">
+                <!-- Slideshow Galerie tactile -->
+                <div class="slideshow-box" id="slideshowBox">
+                    <div class="slides-track" id="slidesTrack"></div>
+                    <button type="button" class="slideshow-nav-btn prev" id="btnSlidePrev"><i class="fa-solid fa-chevron-left"></i></button>
+                    <button type="button" class="slideshow-nav-btn next" id="btnSlideNext"><i class="fa-solid fa-chevron-right"></i></button>
+                    <div class="slideshow-indicators" id="slidesIndicators"></div>
+                </div>
+
+                <!-- Panneau des caractéristiques -->
+                <div class="modal-info-panel">
+                    <span class="modal-region-badge" id="modalRegionBadge">Miss Région</span>
+                    <h2 class="modal-candidate-name font-heading" id="modalCandidateName">Prénom Nom</h2>
+                    
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="btn-instagram-link" id="modalInstagramLink">
+                        <i class="fa-brands fa-instagram"></i>
+                        <span id="modalInstagramHandle">@instagram</span>
+                    </a>
+
+                    <div class="specs-grid">
+                        <div><span class="label">Âge :</span> <span class="value" id="modalAge">-</span> ans</div>
+                        <div><span class="label">Taille :</span> <span class="value" id="modalHeight">-</span></div>
+                        <div><span class="label">Yeux :</span> <span class="value" id="modalEyes">-</span></div>
+                        <div><span class="label">Cheveux :</span> <span class="value" id="modalHair">-</span></div>
+                    </div>
+
+                    <p class="modal-biography" id="modalBio"></p>
+                </div>
+            </div>
+
+            <!-- Espace d'évaluation du spectateur -->
+            <div class="modal-eval-section">
+                <!-- Note de 1 à 10 -->
+                <div class="rating-bar-container">
+                    <div class="eval-block-title">
+                        <i class="fa-solid fa-star" style="color: var(--pastel-amber);"></i>
+                        <span>Ma note sur 10 : <strong id="ratingScoreDisplay">Pas encore notée</strong></span>
+                    </div>
+                    <div class="rating-buttons-strip" id="ratingButtonsStrip">
+                        <!-- 1 à 10 générés en JS -->
+                    </div>
+                    <button type="button" class="btn-reset-rate" id="btnResetRating">Effacer ma note</button>
+                </div>
+
+                <!-- Tags Qualités & Défauts -->
+                <div class="eval-block-title">
+                    <i class="fa-solid fa-tags" style="color: var(--pastel-purple);"></i>
+                    <span>Mes étiquettes & ressentis</span>
+                </div>
+
+                <div class="tags-category-heading">Qualités</div>
+                <div class="interactive-tags-box" id="modalQualitiesList"></div>
+
+                <div class="tags-category-heading">Défauts</div>
+                <div class="interactive-tags-box" id="modalFlawsList"></div>
+
+                <!-- Créateur de tag personnalisé -->
+                <div class="custom-tag-creator">
+                    <input type="text" id="customTagInput" placeholder="Créer votre tag (ex: Pétillante, Émotive...)" maxlength="24">
+                    <select id="customTagType">
+                        <option value="quality">Qualité (+)</option>
+                        <option value="flaw">Défaut (-)</option>
+                    </select>
+                    <button type="button" class="btn-add-custom-tag" id="btnAddCustomTag"><i class="fa-solid fa-plus"></i> Ajouter</button>
+                </div>
+
+                <!-- Bloc-notes 256 caractères max -->
+                <div class="eval-block-title">
+                    <i class="fa-solid fa-pen" style="color: var(--pastel-rose);"></i>
+                    <span>Mes notes (256 car. max)</span>
+                </div>
+                <div class="notes-textarea-box">
+                    <textarea id="modalNoteTextarea" maxlength="256" placeholder="Noter votre avis personnel sur son défilé, son discours ou sa répartie..."></textarea>
+                    <div class="notes-footer-bar">
+                        <span id="charCounterText">0 / 256 caractères</span>
+                        <span id="autoSaveIndicator" style="color: var(--pastel-mint); display: none;"><i class="fa-solid fa-check"></i> Sauvegardé</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODALE DU PODIUM TOP 3 -->
+    <div class="modal-backdrop" id="podiumModalBackdrop">
+        <div class="modal-window podium-modal-content">
+            <button type="button" class="btn-close-modal" id="btnClosePodiumModal" title="Fermer">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <h2 class="podium-title font-heading">Mon Pronostic Top 3</h2>
+            <p class="podium-subtitle">Composez votre podium idéal pour l'élection Miss France 2027</p>
+
+            <div class="podium-visual-row">
+                <!-- 2ème Dauphine (Bronze) -->
+                <div class="podium-column third">
+                    <div class="podium-rank-badge">3</div>
+                    <img src="" alt="2ème Dauphine" class="podium-avatar-preview" id="podiumPreview3">
+                    <div class="podium-step-name" id="podiumName3">À choisir</div>
+                    <div class="podium-step-region" id="podiumRegion3">2ème Dauphine</div>
+                    <select class="podium-select-field" id="selectPodium3" data-step="3">
+                        <option value="">Sélectionner...</option>
+                    </select>
+                </div>
+
+                <!-- Miss France 2027 (Or) -->
+                <div class="podium-column first">
+                    <div class="podium-rank-badge"><i class="fa-solid fa-crown"></i></div>
+                    <img src="" alt="Miss France" class="podium-avatar-preview" id="podiumPreview1">
+                    <div class="podium-step-name font-heading" id="podiumName1" style="font-size: 1.1rem;">À choisir</div>
+                    <div class="podium-step-region" id="podiumRegion1" style="font-weight: 700; color: #b45309;">Miss France 2027</div>
+                    <select class="podium-select-field" id="selectPodium1" data-step="1">
+                        <option value="">Sélectionner...</option>
+                    </select>
+                </div>
+
+                <!-- 1ère Dauphine (Argent) -->
+                <div class="podium-column second">
+                    <div class="podium-rank-badge">2</div>
+                    <img src="" alt="1ère Dauphine" class="podium-avatar-preview" id="podiumPreview2">
+                    <div class="podium-step-name" id="podiumName2">À choisir</div>
+                    <div class="podium-step-region" id="podiumRegion2">1ère Dauphine</div>
+                    <select class="podium-select-field" id="selectPodium2" data-step="2">
+                        <option value="">Sélectionner...</option>
+                    </select>
+                </div>
+            </div>
+
+            <button type="button" class="btn-reset-podium" id="btnResetPodium">
+                <i class="fa-solid fa-rotate-left"></i> Réinitialiser mon podium
+            </button>
+        </div>
+    </div>
+
+    <!-- jQuery (Libre MIT) -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <script src="miss.js"></script>
+
+    <script>
+        $(document).ready(function() {
+
+            
+            /* ========================================================
+               2. LOCALSTORAGE ET DONNÉES UTILISATEUR
+               ======================================================== */
+            const KEY_EVALS = "mf2027_evaluations_v2";
+            const KEY_TAGS = "mf2027_custom_tags_v2";
+            const KEY_PODIUM = "mf2027_podium_v2";
+
+            const defaultTags = {
+                qualities: ["Bonjour", "Souriante", "Élégante", "Charismatique", "Naturelle", "Quota", "Nichons!"],
+                flaws: ["Dégueue", "Teubée", "Bovin", "Reptilienne", "Pas ouf", "Moyenne"]
+            };
+
+            function getTagPool() {
+                const stored = localStorage.getItem(KEY_TAGS);
+                if (stored) {
+                    try { return JSON.parse(stored); } catch (e) {}
+                }
+                localStorage.setItem(KEY_TAGS, JSON.stringify(defaultTags));
+                return defaultTags;
+            }
+
+            function addTagToPool(tagName, type) {
+                const pool = getTagPool();
+                const list = (type === "quality") ? pool.qualities : pool.flaws;
+                if (!list.some(t => t.toLowerCase() === tagName.toLowerCase())) {
+                    list.push(tagName);
+                    localStorage.setItem(KEY_TAGS, JSON.stringify(pool));
+                }
+            }
+
+            function getAllEvals() {
+                const stored = localStorage.getItem(KEY_EVALS);
+                if (stored) {
+                    try { return JSON.parse(stored); } catch (e) {}
+                }
+                return {};
+            }
+
+            function getMissEval(missId) {
+                const all = getAllEvals();
+                return all[missId] || { rating: null, tags: [], note: "" };
+            }
+
+            function saveMissEval(missId, evalData) {
+                const all = getAllEvals();
+                all[missId] = evalData;
+                localStorage.setItem(KEY_EVALS, JSON.stringify(all));
+            }
+
+            function getPodiumData() {
+                const stored = localStorage.getItem(KEY_PODIUM);
+                if (stored) {
+                    try { return JSON.parse(stored); } catch (e) {}
+                }
+                return { "1": null, "2": null, "3": null };
+            }
+
+            function savePodiumData(podium) {
+                localStorage.setItem(KEY_PODIUM, JSON.stringify(podium));
+                updatePodiumIndicator();
+            }
+
+            function updatePodiumIndicator() {
+                const p = getPodiumData();
+                if (p["1"] && p["2"] && p["3"]) {
+                    $("#podiumIndicatorDot").show();
+                } else {
+                    $("#podiumIndicatorDot").hide();
+                }
+            }
+
+            /* ========================================================
+               3. FILTRES MULTI-RÉGIONS & RECHERCHE
+               ======================================================== */
+            let selectedRegions = [];
+
+            function populateRegions() {
+                const regions = [...new Set(candidates.map(c => c.region))].sort();
+                const $container = $("#regionsListContainer").empty();
+
+                regions.forEach(region => {
+                    $container.append(`
+                        <label class="region-checkbox-label">
+                            <input type="checkbox" value="${region}" class="region-chk">
+                            <span>${region}</span>
+                        </label>
+                    `);
+                });
+            }
+
+            function updateActiveRegionsUI() {
+                const $badges = $("#activeRegionsBadges").empty();
+                if (selectedRegions.length === 0) {
+                    $("#regionsSelectLabel").text("Toutes les régions");
+                } else if (selectedRegions.length === 1) {
+                    $("#regionsSelectLabel").text(selectedRegions[0]);
+                } else {
+                    $("#regionsSelectLabel").text(`${selectedRegions.length} régions sélectionnées`);
+                }
+
+                selectedRegions.forEach(reg => {
+                    $badges.append(`
+                        <span class="active-pill">
+                            ${reg} <i class="fa-solid fa-xmark remove-reg-pill" data-region="${reg}"></i>
+                        </span>
+                    `);
+                });
+            }
+
+            /* ========================================================
+               4. AFFICHAGE DE LA GRILLE DES MISS
+               ======================================================== */
+            function renderGrid() {
+                const query = $("#searchInput").val().toLowerCase().trim();
+                const ratingFilter = $("#ratingFilterSelect").val();
+                const allEvals = getAllEvals();
+                const pool = getTagPool();
+                const $grid = $("#missGridContainer").empty();
+
+                const filtered = candidates.filter(miss => {
+                    // Filtre région
+                    const matchRegion = selectedRegions.length === 0 || selectedRegions.includes(miss.region);
+
+                    // Filtre texte
+                    const matchQuery =
+                        miss.firstName.toLowerCase().includes(query) ||
+                        miss.lastName.toLowerCase().includes(query) ||
+                        miss.region.toLowerCase().includes(query) ||
+                        `${miss.firstName} ${miss.lastName}`.toLowerCase().includes(query);
+
+                    // Filtre note
+                    const userEval = allEvals[miss.id] || { rating: null };
+                    let matchRating = true;
+
+                    if (ratingFilter === "unrated") {
+                        matchRating = !userEval.rating;
+                    } else if (ratingFilter !== "all") {
+                        const min = parseInt(ratingFilter, 10);
+                        matchRating = userEval.rating && userEval.rating >= min;
+                    }
+
+                    return matchRegion && matchQuery && matchRating;
+                });
+
+                if (filtered.length === 0) {
+                    $grid.append(`
+                        <div class="no-results-state">
+                            <i class="fa-regular fa-face-smile fa-2x" style="margin-bottom:12px; color: var(--pastel-purple);"></i>
+                            <p style="font-size: 1.05rem; font-weight:600;">Aucune candidate ne correspond à vos critères.</p>
+                            <p style="font-size: 0.85rem; margin-top:4px;">Essayez d'élargir la recherche ou les filtres.</p>
+                        </div>
+                    `);
+                    return;
+                }
+
+                filtered.forEach(miss => {
+                    const userEval = allEvals[miss.id] || { rating: null, tags: [], note: "" };
+
+                    // Badge de note sur la photo
+                    const ratingBadge = userEval.rating
+                        ? `<div class="card-rating-badge"><i class="fa-solid fa-star"></i> ${userEval.rating}/10</div>`
+                        : "";
+
+                    // Pastilles d'évaluation sous la carte
+                    let recapItems = [];
+
+                    if (userEval.rating) {
+                        recapItems.push(`<span class="mini-tag rating"><i class="fa-solid fa-star"></i> ${userEval.rating}/10</span>`);
+                    }
+
+                    if (userEval.tags && userEval.tags.length > 0) {
+                        userEval.tags.slice(0, 3).forEach(tag => {
+                            const isFlaw = pool.flaws.includes(tag);
+                            const cls = isFlaw ? "flaw" : "quality";
+                            const icon = isFlaw ? "-" : "+";
+                            recapItems.push(`<span class="mini-tag ${cls}">${icon} ${tag}</span>`);
+                        });
+                        if (userEval.tags.length > 3) {
+                            recapItems.push(`<span class="mini-tag" style="background:#f1f5f9; color: var(--text-muted);">+${userEval.tags.length - 3}</span>`);
+                        }
+                    }
+
+                    if (userEval.note && userEval.note.trim() !== "") {
+                        recapItems.push(`<span class="mini-tag note-present"><i class="fa-solid fa-pen"></i> Note</span>`);
+                    }
+
+                    const recapHtml = recapItems.length > 0
+                        ? `<div class="card-evaluation-recap">${recapItems.join("")}</div>`
+                        : "";
+
+                    const cardHtml = `
+                        <div class="miss-card" data-id="${miss.id}">
+                            <div class="miss-card-media">
+                                <span class="card-region-tag">Miss ${miss.region}</span>
+                                ${ratingBadge}
+                                <img src="${miss.photos[0]}" alt="${miss.firstName} ${miss.lastName}" loading="lazy">
+                            </div>
+                            <div class="miss-card-content">
+                                <div>
+                                    <h3 class="miss-name-title font-heading">${miss.firstName} ${miss.lastName}</h3>
+                                    <div class="miss-meta-specs">${miss.age} ans • ${miss.height}</div>
+                                </div>
+                                ${recapHtml}
+                            </div>
+                        </div>
+                    `;
+
+                    $grid.append(cardHtml);
+                });
+            }
+
+            /* ========================================================
+               5. GESTION DU SLIDESHOW DANS LA MODALE
+               ======================================================== */
+            let currentSlideIndex = 0;
+            let currentSlidePhotos = [];
+
+            function initSlideshow(photos) {
+                currentSlidePhotos = photos;
+                currentSlideIndex = 0;
+
+                const $track = $("#slidesTrack").empty();
+                const $dots = $("#slidesIndicators").empty();
+
+                photos.forEach((photoUrl, i) => {
+                    $track.append(`
+                        <div class="slide-item">
+                            <img src="${photoUrl}" alt="Photo ${i + 1}">
+                        </div>
+                    `);
+                    $dots.append(`<div class="indicator-dot ${i === 0 ? 'active' : ''}" data-index="${i}"></div>`);
+                });
+
+                updateSlideshowPosition();
+            }
+
+            function updateSlideshowPosition() {
+                const offset = -currentSlideIndex * 100;
+                $("#slidesTrack").css("transform", `translateX(${offset}%)`);
+                $("#slidesIndicators .indicator-dot").removeClass("active");
+                $(`#slidesIndicators .indicator-dot[data-index="${currentSlideIndex}"]`).addClass("active");
+            }
+
+            function nextSlide() {
+                if (currentSlidePhotos.length === 0) return;
+                currentSlideIndex = (currentSlideIndex + 1) % currentSlidePhotos.length;
+                updateSlideshowPosition();
+            }
+
+            function prevSlide() {
+                if (currentSlidePhotos.length === 0) return;
+                currentSlideIndex = (currentSlideIndex - 1 + currentSlidePhotos.length) % currentSlidePhotos.length;
+                updateSlideshowPosition();
+            }
+
+            $("#btnSlideNext").on("click", nextSlide);
+            $("#btnSlidePrev").on("click", prevSlide);
+
+            $("#slidesIndicators").on("click", ".indicator-dot", function() {
+                currentSlideIndex = parseInt($(this).data("index"), 10);
+                updateSlideshowPosition();
+            });
+
+            // Swipe / Touch support
+            let touchStartX = 0;
+            let touchEndX = 0;
+
+            $("#slideshowBox").on("touchstart", function(e) {
+                touchStartX = e.originalEvent.changedTouches[0].screenX;
+            });
+
+            $("#slideshowBox").on("touchend", function(e) {
+                touchEndX = e.originalEvent.changedTouches[0].screenX;
+                handleSwipe();
+            });
+
+            function handleSwipe() {
+                const diff = touchStartX - touchEndX;
+                if (Math.abs(diff) > 40) {
+                    if (diff > 0) nextSlide();
+                    else prevSlide();
+                }
+            }
+
+            /* ========================================================
+               6. MODALE DÉTAIL MISS
+               ======================================================== */
+            let activeMissId = null;
+
+            function openMissModal(missId) {
+                const miss = candidates.find(c => c.id === missId);
+                if (!miss) return;
+
+                activeMissId = missId;
+                const userEval = getMissEval(missId);
+
+                // Galerie
+                initSlideshow(miss.photos);
+
+                // Caractéristiques
+                $("#modalRegionBadge").text(`Miss ${miss.region}`);
+                $("#modalCandidateName").text(`${miss.firstName} ${miss.lastName}`);
+                $("#modalAge").text(miss.age);
+                $("#modalHeight").text(miss.height);
+                $("#modalEyes").text(miss.eyes);
+                $("#modalHair").text(miss.hair);
+                $("#modalBio").text(miss.description);
+
+                // Lien Instagram
+                const instaHandle = miss.instagram || `${miss.firstName.toLowerCase()}${miss.lastName.toLowerCase()}`;
+                $("#modalInstagramLink").attr("href", `https://www.instagram.com/${instaHandle}/`);
+                $("#modalInstagramHandle").text(`@${instaHandle}`);
+
+                // Note 1 à 10
+                renderRatingBar(userEval.rating);
+
+                // Tags
+                renderModalTags(userEval.tags || []);
+
+                // Carnet de notes
+                $("#modalNoteTextarea").val(userEval.note || "");
+                updateCharCounter(userEval.note ? userEval.note.length : 0);
+
+                $("#missModalBackdrop").css("display", "flex").hide().fadeIn(200);
+            }
+
+            function closeMissModal() {
+                $("#missModalBackdrop").fadeOut(200);
+                activeMissId = null;
+                renderGrid();
+            }
+
+            // Génération de la barre 1 à 10
+            function renderRatingBar(currentScore) {
+                const $strip = $("#ratingButtonsStrip").empty();
+
+                for (let i = 1; i <= 10; i++) {
+                    const isSelected = currentScore === i ? "selected" : "";
+                    $strip.append(`
+                        <button type="button" class="btn-rate-score ${isSelected}" data-score="${i}">${i}</button>
+                    `);
+                }
+
+                if (currentScore) {
+                    $("#ratingScoreDisplay").text(`${currentScore} / 10`);
+                } else {
+                    $("#ratingScoreDisplay").text("Pas encore notée");
+                }
+            }
+
+            // Clic sur une note
+            $("#ratingButtonsStrip").on("click", ".btn-rate-score", function() {
+                if (!activeMissId) return;
+                const score = parseInt($(this).data("score"), 10);
+                const currentEval = getMissEval(activeMissId);
+                currentEval.rating = score;
+
+                saveMissEval(activeMissId, currentEval);
+                renderRatingBar(score);
+                showAutoSaveNotification();
+            });
+
+            // Réinitialiser la note
+            $("#btnResetRating").on("click", function() {
+                if (!activeMissId) return;
+                const currentEval = getMissEval(activeMissId);
+                currentEval.rating = null;
+
+                saveMissEval(activeMissId, currentEval);
+                renderRatingBar(null);
+                showAutoSaveNotification();
+            });
+
+            // Affichage des tags
+            function renderModalTags(activeTags) {
+                const pool = getTagPool();
+                const $qBox = $("#modalQualitiesList").empty();
+                const $fBox = $("#modalFlawsList").empty();
+
+                pool.qualities.forEach(tag => {
+                    const active = activeTags.includes(tag) ? "active" : "";
+                    $qBox.append(`<button type="button" class="tag-toggle-btn quality ${active}" data-tag="${tag}">${tag}</button>`);
+                });
+
+                pool.flaws.forEach(tag => {
+                    const active = activeTags.includes(tag) ? "active" : "";
+                    $fBox.append(`<button type="button" class="tag-toggle-btn flaw ${active}" data-tag="${tag}">${tag}</button>`);
+                });
+            }
+
+            // Clic sur un tag
+            $(".modal-eval-section").on("click", ".tag-toggle-btn", function() {
+                if (!activeMissId) return;
+                $(this).toggleClass("active");
+
+                const tagValue = $(this).data("tag");
+                const currentEval = getMissEval(activeMissId);
+                let tags = currentEval.tags || [];
+
+                if ($(this).hasClass("active")) {
+                    if (!tags.includes(tagValue)) tags.push(tagValue);
+                } else {
+                    tags = tags.filter(t => t !== tagValue);
+                }
+
+                currentEval.tags = tags;
+                saveMissEval(activeMissId, currentEval);
+                showAutoSaveNotification();
+            });
+
+            // Ajout d'un tag personnalisé
+            $("#btnAddCustomTag").on("click", function() {
+                if (!activeMissId) return;
+                const val = $("#customTagInput").val().trim();
+                const type = $("#customTagType").val();
+
+                if (!val) return;
+
+                addTagToPool(val, type);
+
+                const currentEval = getMissEval(activeMissId);
+                if (!currentEval.tags) currentEval.tags = [];
+                if (!currentEval.tags.includes(val)) {
+                    currentEval.tags.push(val);
+                    saveMissEval(activeMissId, currentEval);
+                }
+
+                $("#customTagInput").val("");
+                renderModalTags(currentEval.tags);
+                showAutoSaveNotification();
+            });
+
+            $("#customTagInput").on("keypress", function(e) {
+                if (e.which === 13) {
+                    e.preventDefault();
+                    $("#btnAddCustomTag").click();
+                }
+            });
+
+            // Saisie dans le bloc-notes (sauvegarde auto et limite 256)
+            $("#modalNoteTextarea").on("input", function() {
+                if (!activeMissId) return;
+                let text = $(this).val();
+                if (text.length > 256) {
+                    text = text.substring(0, 256);
+                    $(this).val(text);
+                }
+                updateCharCounter(text.length);
+
+                const currentEval = getMissEval(activeMissId);
+                currentEval.note = text;
+                saveMissEval(activeMissId, currentEval);
+                showAutoSaveNotification();
+            });
+
+            function updateCharCounter(len) {
+                const $c = $("#charCounterText");
+                $c.text(`${len} / 256 caractères`);
+                if (len >= 256) $c.addClass("counter-alert");
+                else $c.removeClass("counter-alert");
+            }
+
+            function showAutoSaveNotification() {
+                $("#autoSaveIndicator").stop(true, true).fadeIn(150).delay(1000).fadeOut(350);
+            }
+
+            /* ========================================================
+               7. MODALE PODIUM TOP 3
+               ======================================================== */
+            function openPodiumModal() {
+                renderPodiumSelectors();
+                updatePodiumVisuals();
+                $("#podiumModalBackdrop").css("display", "flex").hide().fadeIn(200);
+            }
+
+            function closePodiumModal() {
+                $("#podiumModalBackdrop").fadeOut(200);
+            }
+
+            function renderPodiumSelectors() {
+                const podium = getPodiumData();
+                const sortedCandidates = [...candidates].sort((a, b) => a.lastName.localeCompare(b.lastName));
+
+                [1, 2, 3].forEach(step => {
+                    const $sel = $(`#selectPodium${step}`).empty();
+                    $sel.append(`<option value="">Sélectionner...</option>`);
+
+                    sortedCandidates.forEach(cand => {
+                        const currentChoice = podium[step.toString()];
+                        const isChosenElsewhere = Object.entries(podium).some(([s, id]) => s !== step.toString() && id === cand.id);
+
+                        const selectedAttr = (currentChoice === cand.id) ? "selected" : "";
+                        const disabledAttr = (isChosenElsewhere) ? "disabled" : "";
+
+                        $sel.append(`
+                            <option value="${cand.id}" ${selectedAttr} ${disabledAttr}>
+                                ${cand.firstName} ${cand.lastName} (Miss ${cand.region})
+                            </option>
+                        `);
+                    });
+                });
+            }
+
+            function updatePodiumVisuals() {
+                const podium = getPodiumData();
+                const placeholder = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23cbd5e1'/%3E%3Ctext x='50%25' y='50%25' fill='%23ffffff' font-family='sans-serif' font-size='26' text-anchor='middle' dy='.3em'%3E?%3C/text%3E%3C/svg%3E";
+
+                [1, 2, 3].forEach(step => {
+                    const missId = podium[step.toString()];
+                    const miss = candidates.find(c => c.id === missId);
+
+                    if (miss) {
+                        $(`#podiumPreview${step}`).attr("src", miss.photos[0]);
+                        $(`#podiumName${step}`).text(`${miss.firstName} ${miss.lastName}`);
+                        $(`#podiumRegion${step}`).text(`Miss ${miss.region}`);
+                    } else {
+                        $(`#podiumPreview${step}`).attr("src", placeholder);
+                        $(`#podiumName${step}`).text("À choisir");
+                        if (step === 1) $(`#podiumRegion${step}`).text("Miss France 2027");
+                        else if (step === 2) $(`#podiumRegion${step}`).text("1ère Dauphine");
+                        else $(`#podiumRegion${step}`).text("2ème Dauphine");
+                    }
+                });
+            }
+
+            $(".podium-select-field").on("change", function() {
+                const step = $(this).data("step").toString();
+                const selectedId = $(this).val() || null;
+                const podium = getPodiumData();
+
+                podium[step] = selectedId;
+                savePodiumData(podium);
+                renderPodiumSelectors();
+                updatePodiumVisuals();
+            });
+
+            $("#btnResetPodium").on("click", function() {
+                const emptyPodium = { "1": null, "2": null, "3": null };
+                savePodiumData(emptyPodium);
+                renderPodiumSelectors();
+                updatePodiumVisuals();
+            });
+
+            /* ========================================================
+               8. GESTION DES ÉVÉNEMENTS GLOBAUX
+               ======================================================== */
+            // Clic carte Miss
+            $("#missGridContainer").on("click", ".miss-card", function() {
+                openMissModal($(this).data("id"));
+            });
+
+            // Fermetures modales
+            $("#btnCloseMissModal").on("click", closeMissModal);
+            $("#missModalBackdrop").on("click", function(e) {
+                if ($(e.target).is("#missModalBackdrop")) closeMissModal();
+            });
+
+            $("#btnOpenPodium").on("click", openPodiumModal);
+            $("#btnClosePodiumModal").on("click", closePodiumModal);
+            $("#podiumModalBackdrop").on("click", function(e) {
+                if ($(e.target).is("#podiumModalBackdrop")) closePodiumModal();
+            });
+
+            // Barre de recherche et filtre note
+            $("#searchInput").on("input", renderGrid);
+            $("#ratingFilterSelect").on("change", renderGrid);
+
+            // Menu régions déroulant
+            $("#btnToggleRegionsMenu").on("click", function(e) {
+                e.stopPropagation();
+                $("#regionsDropdownMenu").toggle();
+            });
+
+            $(document).on("click", function(e) {
+                if (!$(e.target).closest(".filter-regions-pill").length) {
+                    $("#regionsDropdownMenu").hide();
+                }
+            });
+
+            // Checkboxes régions
+            $("#regionsListContainer").on("change", ".region-chk", function() {
+                const val = $(this).val();
+                if ($(this).is(":checked")) {
+                    if (!selectedRegions.includes(val)) selectedRegions.push(val);
+                } else {
+                    selectedRegions = selectedRegions.filter(r => r !== val);
+                }
+                updateActiveRegionsUI();
+                renderGrid();
+            });
+
+            // Tout cocher / Tout effacer régions
+            $("#btnCheckAll").on("click", function() {
+                selectedRegions = [...new Set(candidates.map(c => c.region))];
+                $(".region-chk").prop("checked", true);
+                updateActiveRegionsUI();
+                renderGrid();
+            });
+
+            $("#btnUncheckAll").on("click", function() {
+                selectedRegions = [];
+                $(".region-chk").prop("checked", false);
+                updateActiveRegionsUI();
+                renderGrid();
+            });
+
+            // Retirer une pastille région
+            $("#activeRegionsBadges").on("click", ".remove-reg-pill", function() {
+                const reg = $(this).data("region");
+                selectedRegions = selectedRegions.filter(r => r !== reg);
+                $(`.region-chk[value="${reg}"]`).prop("checked", false);
+                updateActiveRegionsUI();
+                renderGrid();
+            });
+
+            /* ========================================================
+               9. INITIALISATION AU DÉMARRAGE
+               ======================================================== */
+            populateRegions();
+            updateActiveRegionsUI();
+            updatePodiumIndicator();
+            renderGrid();
+        });
+    </script>
+</body>
+</html>
